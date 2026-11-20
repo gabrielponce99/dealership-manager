@@ -19,9 +19,7 @@ public class UserInterface {
         this.dealership = file.getDealership();
     }
 
-    public UserInterface() {
-
-    }
+    public UserInterface() {}
 
     private void displayVehicles(List<Vehicle> vehicles) {
         if (vehicles == null || vehicles.isEmpty()) {
