@@ -3,6 +3,8 @@ package com.pluralsight.dealershipmanager.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static com.pluralsight.dealershipmanager.model.LoanCalculator.calculateMonthlyPayment;
+
 public class SalesContract extends Contract {
     private BigDecimal salesTaxAmount, recordingFee;
     private boolean isFinanced;
@@ -49,6 +51,16 @@ public class SalesContract extends Contract {
 
     @Override
     public BigDecimal getMonthlyPayment() {
-        return null;
+        if (!isFinanced) {
+            return BigDecimal.ZERO;
+        } else {
+            boolean isAbovePriceThreshold = getVehicleSold().getPrice().compareTo(new BigDecimal("10000")) >= 0;
+
+            if (isAbovePriceThreshold) {
+                return calculateMonthlyPayment(getVehicleSold().getPrice(), new BigDecimal("0.0425"), 48);
+            } else {
+                return calculateMonthlyPayment(getVehicleSold().getPrice(), new BigDecimal("0.0525"), 24);
+            }
+        }
     }
 }
