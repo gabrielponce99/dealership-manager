@@ -7,8 +7,8 @@ public class SalesContract extends Contract {
     private BigDecimal salesTaxAmount, recordingFee;
     private boolean isFinanced;
 
-    public SalesContract(LocalDate contractDate, String customerName, String customerEmail, BigDecimal salesTaxAmount, BigDecimal recordingFee, boolean isFinanced) {
-        super(contractDate, customerName, customerEmail);
+    public SalesContract(LocalDate contractDate, String customerName, String customerEmail, Vehicle vehicleSold, BigDecimal salesTaxAmount, BigDecimal recordingFee, boolean isFinanced) {
+        super(contractDate, customerName, customerEmail, vehicleSold);
         this.salesTaxAmount = salesTaxAmount;
         this.recordingFee = recordingFee;
         this.isFinanced = isFinanced;

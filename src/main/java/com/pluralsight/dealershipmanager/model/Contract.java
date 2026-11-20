@@ -7,11 +7,13 @@ import java.time.LocalDateTime;
 public abstract class Contract {
     private LocalDate contractDate;
     private String customerName, customerEmail;
+    private Vehicle vehicleSold;
 
-    public Contract(LocalDate contractDate, String customerName, String customerEmail) {
+    public Contract(LocalDate contractDate, String customerName, String customerEmail, Vehicle vehicleSold) {
         this.contractDate = contractDate;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
+        this.vehicleSold = vehicleSold;
     }
 
     public LocalDate getContractDate() {
@@ -36,6 +38,14 @@ public abstract class Contract {
 
     public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
+    }
+
+    public Vehicle getVehicleSold() {
+        return vehicleSold;
+    }
+
+    public void setVehicleSold(Vehicle vehicleSold) {
+        this.vehicleSold = vehicleSold;
     }
 
     public abstract BigDecimal getTotalPrice();
