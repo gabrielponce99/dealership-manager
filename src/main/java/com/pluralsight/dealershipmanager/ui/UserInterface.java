@@ -1,14 +1,15 @@
-package com.pluralsight.dealershipmanager;
+package com.pluralsight.dealershipmanager.ui;
 
-import com.pluralsight.dealershipmanager.Vehicle;
+import com.pluralsight.dealershipmanager.data.DealershipFileManager;
+import com.pluralsight.dealershipmanager.model.Dealership;
+import com.pluralsight.dealershipmanager.model.Vehicle;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private Dealership dealership;
     private DealershipFileManager fileManager = new DealershipFileManager();
 
@@ -96,6 +97,7 @@ public class UserInterface {
         scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByPrice(min, max));
+        pressEnterToContinue();
     }
 
     public void processGetByMakeModelRequest() {
@@ -106,7 +108,7 @@ public class UserInterface {
         String model = scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByMakeModel(make, model));
-
+        pressEnterToContinue();
     }
 
     public void processGetByYearRequest() {
@@ -117,7 +119,7 @@ public class UserInterface {
         int max = scanner.nextInt();
 
         displayVehicles(dealership.getVehiclesByYear(min, max));
-
+        pressEnterToContinue();
     }
 
     public void processGetByColorRequest() {
@@ -125,6 +127,7 @@ public class UserInterface {
         String color = scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByColor(color));
+        pressEnterToContinue();
     }
 
     public void processGetByMileageRequest() {
@@ -137,6 +140,7 @@ public class UserInterface {
         scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByMileage(min, max));
+        pressEnterToContinue();
     }
 
     public void processGetByVehicleTypeRequest() {
@@ -144,11 +148,13 @@ public class UserInterface {
         String vehicleType = scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByType(vehicleType));
+        pressEnterToContinue();
     }
 
     public void processGetAllVehiclesRequest() {
         List<Vehicle> vehicles = this.dealership.getAllVehicles();
         displayVehicles(vehicles);
+        pressEnterToContinue();
     }
 
     public void processAddVehicleRequest() {
@@ -166,6 +172,7 @@ public class UserInterface {
 
         fileManager.saveDealership(dealership);
         System.out.println("Vehicle added successfully!");
+        pressEnterToContinue();
     }
 
     public void processRemoveVehicleRequest() {
@@ -236,5 +243,11 @@ public class UserInterface {
                 return input;
             }
         }
+    }
+
+    public static void pressEnterToContinue() {
+        System.out.println();
+        System.out.println("Press enter to continue back to the menu...");
+        scanner.nextLine();
     }
 }

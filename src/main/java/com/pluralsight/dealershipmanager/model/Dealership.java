@@ -1,6 +1,4 @@
-package com.pluralsight.dealershipmanager;
-
-import com.pluralsight.dealershipmanager.Vehicle;
+package com.pluralsight.dealershipmanager.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
